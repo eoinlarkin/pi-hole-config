@@ -53,36 +53,37 @@ The following steps are an abreviated version of the instructions for writing a 
 `sudo umount /dev/sda1`    
 `sudo umount /dev/sda2`
 
+- Once the Raspberry Pi has been connected to the LAN, ssh into the Pi in order to setup the various applications. To ssh, use the following command:    
+`ssh pi@<ip address>`    
+The IP addresses of all devices on the current network can be found as follows:
+`sudo nmap -sn <Router IP address>/24`
+
+
+
 ## Pi-Hole
 
 ### Overview
 
-[Pi-Hole](https://pi-hole.net/) is 
-
-Pi-Hole can also be configured to act as a DHCP server to 
-
-
-
-Discovering the SD card mountpoint and unmounting it
-Run lsblk -p to see which devices are currently connected to your machine.
-
-If your computer has a slot for SD cards, insert the card. If not, insert the card into an SD card reader, then connect the reader to your computer.
-
-Run lsblk -p again. The new device that has appeared is your SD card (you can also usually tell from the listed device size). The naming of the device will follow the format described in the next paragraph.
-
-The left column of the results from the lsblk -p command gives the device name of your SD card and the names of any partitions on it (usually only one, but there may be several if the card was previously used). It will be listed as something like /dev/mmcblk0 or /dev/sdX (with partition names /dev/mmcblk0p1 or /dev/sdX1 respectively), where X is a lower-case letter indicating the device (eg. /dev/sdb1). The right column shows where the partitions have been mounted (if they haven't been, it will be blank).
-
-If any partitions on the SD card have been mounted, unmount them all with umount, for example umount /dev/sdX1 (replace sdX1 with your SD card's device name, and change the number for any other partitions).
+[Pi-Hole](https://pi-hole.net/) is a Linux network-level advertisement and Internet tracker blocking application which acts as a DNS sinkhole and optionally a DHCP server, intended for use on a private network.
 
 ### Installation
 
-Installation of Pi-Hole can be completed by running the following code in the Terminal :
+Installation of Pi-Hole can be completed by completing the following steps:
 
-```
-git clone --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
-cd "Pi-hole/automated install/"
-sudo bash basic-install.sh
-```
+- SSH into the Raspberry Pi. It is recommended to set a static IP address for the Pi; this can usually be done by access the router settings
+
+- Update the packages on the Raspberry Pi:    
+`sudo apt-get update && sudo apt-get upgrade`
+
+- Install git on the Raspberry Pi:
+
+
+- Run the following code in Terminal :
+    ```
+    git clone --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
+    cd "Pi-hole/automated install/"
+    sudo bash basic-install.sh
+    ```
 
 
 ## Jackett
