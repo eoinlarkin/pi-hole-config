@@ -35,7 +35,7 @@ The following steps are an abreviated version of the instructions for writing a 
 `touch /media/USER/boot/ssh`
 
 - Write the WiFi credentials to the Raspberry Pi as follows:    
-```
+    ```
 echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=IE
@@ -48,7 +48,7 @@ network={
         pairwise=CCMP
         auth_alg=OPEN
 }" > /media/USER/boot/wpa_supplicant.conf
-```
+    ```
 - Unmount each SD Card partition - there should be two:    
 `sudo umount /dev/sda1`    
 `sudo umount /dev/sda2`
