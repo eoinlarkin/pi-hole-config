@@ -31,8 +31,8 @@ The code works as follows:
 
 
 - The code works as follows:
- - `unzip` command will unzip the image file
- - `|` operator will pipe the output
+  - `unzip` command will unzip the image file
+  - `|` operator will pipe the output
 
 - First list item
      - First nested list item
