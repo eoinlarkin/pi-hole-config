@@ -31,11 +31,9 @@ The code works as follows:
 
 
 - The code works as follows:
-  - `unzip` command will unzip the image file
-  - `|` operator will pipe the output
-  - `dd` command is used to convert and copy files
-  - It is assumed that the SD card is mounted at `/dev/sda`
-  - `conv=fsync` command will make  the device flush its buffers and caches so that if the device is removed the data is written to it before the operation is marked as complete and control passed back to the terminal prompt.
+ - `unzip` command will unzip the image file
+ - `|` operator will pipe the output
+
 
 
  d
