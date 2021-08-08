@@ -36,18 +36,18 @@ The following steps are an abreviated version of the instructions for writing a 
 
 - Write the WiFi credentials to the Raspberry Pi as follows:    
     ```
-echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=IE
-network={
-        scan_ssid=1
-        ssid="<Name of your wireless LAN>"
-        psk="<Password for your wireless LAN>"
-        proto=RSN
-        key_mgmt=WPA-PSK
-        pairwise=CCMP
-        auth_alg=OPEN
-}" > /media/USER/boot/wpa_supplicant.conf
+    echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+    update_config=1
+    country=IE
+    network={
+            scan_ssid=1
+            ssid="<Name of your wireless LAN>"
+            psk="<Password for your wireless LAN>"
+            proto=RSN
+            key_mgmt=WPA-PSK
+            pairwise=CCMP
+            auth_alg=OPEN
+    }" > /media/USER/boot/wpa_supplicant.conf
     ```
 - Unmount each SD Card partition - there should be two:    
 `sudo umount /dev/sda1`    
