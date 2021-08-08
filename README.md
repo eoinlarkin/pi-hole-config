@@ -34,7 +34,9 @@ The code works as follows:
  - `unzip` command will unzip the image file
  - `|` operator will pipe the output
 
-
+100. First list item
+     - First nested list item
+       - Second nested list item
 
  d
 
