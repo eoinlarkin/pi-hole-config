@@ -30,7 +30,7 @@ The code works as follows:
  - `conv=fsync` command will make  the device flush its buffers and caches so that if the device is removed the data is written to it before the operation is marked as complete and control passed back to the terminal prompt.
 
 
-
+ d
 
 ## Pi-Hole
 
