@@ -108,7 +108,7 @@ The following steps are taken from the official Jackett GitHub which can be foun
 `sudo mkdir /opt/jackett`    
 `sudo mv Jackett/* /opt/jackett`    
 `rm -rf Jackett`    
-`sudo chown -R pi:pi /opt/jackett`    
+`sudo chown pi:pi /opt/jackett`    
 
 - Jackett can be started by running:    
 `mono --debug /opt/jackett/JackettConsole.exe`
@@ -137,7 +137,7 @@ IThe following steps are taken from the official Sonar website and can be found 
 
 ## Radarr
 
-IThe following steps are taken from the official Radarr wiki which can be found [here](https://wiki.servarr.com/radarr/installation).
+The following steps are taken from the official Radarr wiki which can be found [here](https://wiki.servarr.com/radarr/installation).
 
 
 - Install the prequisites:    
@@ -168,3 +168,28 @@ IThe following steps are taken from the official Radarr wiki which can be found 
 `wget http://raspbian.raspberrypi.org/raspbian/pool/main/libs/libseccomp/libseccomp2_2.5.1-1+rpi1_armhf.deb`    
 `dpkg -i libseccomp2_2.5.1-1+rpi1_armhf.deb`
 
+- Configure systemd so radarr can autostart at boot.
+    ```
+    cat << EOF | sudo tee /etc/systemd/system/radarr.service > /dev/null
+    [Unit]
+    Description=Radarr Daemon
+    After=syslog.target network.target
+    [Service]
+    User=radarr
+    Group=media
+    Type=simple
+
+    ExecStart=/opt/Radarr/Radarr -nobrowser -data=/data/.config/Radarr/
+    TimeoutStopSec=20
+    KillMode=process
+    Restart=always
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+    ```
+
+- Reload systemd    
+`sudo systemctl -q daemon-reload`
+
+- Enable the Radarr service:    
+`sudo systemctl enable --now -q radarr`
