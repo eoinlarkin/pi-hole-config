@@ -121,10 +121,50 @@ The following steps are taken from the official Jackett GitHub which can be foun
 
 ## Sonarr
 
+IThe following steps are taken from the official Sonar website and can be found [here](https://sonarr.tv/#downloads-v3-linux-debian).
+
+- Add the Sonarr repository:    
+    ```
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 2009837CBFFD68F45BC180471F4F90DE2A9B4BF8
+    echo "deb https://apt.sonarr.tv/debian buster main" | sudo tee /etc/apt/sources.list.d/sonarr.list
+    sudo apt update
+    ```
+
+- Install Sonarr:    
+`sudo apt install sonarr`
+
+- Once install Sonarr can be accessed at the following address:
 
 ## Radarr
 
+IThe following steps are taken from the official Radarr wiki which can be found [here](https://wiki.servarr.com/radarr/installation).
 
 
+- Install the prequisites:    
+`sudo apt install curl mediainfo sqlite3`
 
+- Check the system architecture - this should return **armhf**:    
+`dpkg --print-architecture`
+
+- Download Radarr:    
+`wget --content-disposition 'http://radarr.servarr.com/v1/update/master/updatefile?os=linux&runtime=netcore&arch=arm'`
+
+- Unzip the archive:    
+`tar -xvzf Radarr*.linux*.tar.gz`
+
+- Move the Radarr directory to **opt**:    
+`sudo mv Radarr/ /opt`
+
+- Change ownership of the directory:
+`sudo chown pi:pi /opt/Radarr`
+
+- Raspbian has a version of *libseccomp2* that is too old to support Radarr. The recommended solution from teh Radarr FAQ is to install the backport of *libseccomp2* from the debian repository:
+  - Check that you are running buster: `lsb_release -a`
+  - Add the package key: `sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138`
+  - Add the backport to your sources `echo 'deb http://httpredir.debian.org/debian buster-backports main contrib non-free' | sudo tee -a /etc/apt/sources.list.d/debian-backports.list`
+  - Install the backport of libseccomp2: `sudo apt update && sudo apt install libseccomp2 -t buster-backports`
+
+- If there are issues with libseccomp2, it can be restored as follows:    
+`wget http://raspbian.raspberrypi.org/raspbian/pool/main/libs/libseccomp/libseccomp2_2.5.1-1+rpi1_armhf.deb`    
+`dpkg -i libseccomp2_2.5.1-1+rpi1_armhf.deb`
 
