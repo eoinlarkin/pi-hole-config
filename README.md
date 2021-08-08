@@ -23,11 +23,11 @@ The following steps are an abreviated version of the instructions for writing a 
 - Copy the Raspian image file to the SD card by running the following code:    
 `unzip -p *-raspios-buster-armhf.zip | sudo dd of=/dev/sda bs=4M conv=fsyn`    
 The code works as follows:
-     - `unzip` command will unzip the image file
-     - `|` operator will pipe the output
-     - `dd` command is used to convert and copy files
-     - It is assumed that the SD card is mounted at `/dev/sda`
-     - `conv=fsync` command will make  the device flush its buffers and caches so that if the device is removed the data is written to it before the operation is marked as complete and control passed back to the terminal prompt.
+   - `unzip` command will unzip the image file
+   - `|` operator will pipe the output
+   - `dd` command is used to convert and copy files
+   - It is assumed that the SD card is mounted at `/dev/sda`
+   - `conv=fsync` command will make  the device flush its buffers and caches so that if the device is removed the data is written to it before the operation is marked as complete and control passed back to the terminal prompt.
 
 
  d
