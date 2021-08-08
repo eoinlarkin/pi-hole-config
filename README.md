@@ -4,7 +4,8 @@ The following guide walks through the steps to set up Pi-Hole on a fresh Raspbia
 
 ## Raspbian
 
-![](https://www.raspberrypi.org/app/uploads/2018/03/RPi-Logo-Reg-SCREEN.png){ width: 100px; }
+
+<img src="https://www.raspberrypi.org/app/uploads/2018/03/RPi-Logo-Reg-SCREEN.png" alt="" width="100 px">
 
 
 The following steps are an abreviated version of the instructions for writing a Rasbpian image on a Linxu machine. The full set of instructions can be found [here](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md).
