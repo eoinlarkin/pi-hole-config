@@ -37,7 +37,11 @@ The code works as follows:
 - First list item
      - First nested list item
 
+100. First list item
+     - First nested list item
 
+- First list item
+  - First nested list item
  d
 
 ## Pi-Hole
