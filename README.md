@@ -99,15 +99,24 @@ The following steps are taken from the official Jackett GitHub which can be foun
 - Install Mono:    
 `sudo apt install mono-devel`
 
- 1. Install [Mono 5.8](http://www.mono-project.com/download/#download-lin) or better (using the latest stable release is recommended)
-       * Follow the instructions on the mono website and install the `mono-devel` and the `ca-certificates-mono` packages.
-       * On Red Hat/CentOS/openSUSE/Fedora the `mono-locale-extras` package is also required.
- 2. Install  libcurl:
-       * Debian/Ubuntu: `apt-get install libcurl4-openssl-dev`
-       * Redhat/Fedora: `yum install libcurl-devel`
-       * For other distros see the  [Curl docs](http://curl.haxx.se/dlwiz/?type=devel).
- 3. Download and extract the latest `Jackett.Binaries.Mono.tar.gz` release from the [releases page](https://github.com/Jackett/Jackett/releases) and run Jackett using mono with the command `mono --debug JackettConsole.exe`.
- 4. (Optional) To install Jackett as a service, open the Terminal and run `sudo ./install_service_systemd_mono.sh` You need root permissions to install the service. The service will start on each logon. You can always stop it by running `systemctl stop jackett.service` from Terminal. You can start it again it using `systemctl start jackett.service`. Logs are stored as usual under `~/.config/Jackett/log.txt` and also in `journalctl -u jackett.service`.
+- Install libcurl:    
+`apt-get install libcurl4-openssl-dev`
+
+- Download and extract the latest `Jackett.Binaries.Mono.tar.gz` release from the [releases page](https://github.com/Jackett/Jackett/releases):    
+`wget https://github.com/Jackett/Jackett/releases/download/v0.18.531/Jackett.Binaries.Mono.tar.gz`    
+`tar -xvf *.tar.gz`    
+`sudo mkdir /opt/jackett`    
+`sudo mv Jackett/* /opt/jackett`    
+`rm -rf Jackett`    
+`sudo chown -R pi:pi /opt/jackett`    
+
+- Jackett can be started by running:    
+`mono --debug /opt/jackett/JackettConsole.exe`
+
+- To install Jackett as a service, run `sudo /opt/jackett/install_service_systemd_mono.sh` To stop the service run `systemctl stop jackett.service` from Terminal. You can start it again it using `systemctl start jackett.service`. Logs are stored as usual under `~/.config/Jackett/log.txt` and also in `journalctl -u jackett.service`.
+
+- Once Jackett is started, it can be access at the following address:    
+`http://ip.address:9117` 
 
 
 ## Sonarr
