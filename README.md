@@ -4,12 +4,9 @@ The following guide walks through the steps to set up Pi-Hole on a fresh Raspbia
 
 ## Raspbian
 
-
 <img src="https://www.raspberrypi.org/app/uploads/2018/03/RPi-Logo-Reg-SCREEN.png" alt="" width="100 px">
 
-
 The following steps are an abreviated version of the instructions for writing a Rasbpian image on a Linxu machine. The full set of instructions can be found [here](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md).
-
 
 - Download the latest version of Raspbian. The link to the latest version can be found on the following webpage: [link](https://www.raspberrypi.org/software/operating-systems/)  
 `wget https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-05-28/2021-05-07-raspios-buster-armhf-lite.zip`
@@ -58,8 +55,6 @@ The following steps are an abreviated version of the instructions for writing a 
 The IP addresses of all devices on the current network can be found as follows:
 `sudo nmap -sn <Router IP address>/24`
 
-
-
 ## Pi-Hole
 
 ### Overview
@@ -75,8 +70,8 @@ Installation of Pi-Hole can be completed by completing the following steps:
 - Update the packages on the Raspberry Pi:    
 `sudo apt-get update && sudo apt-get upgrade`
 
-- Install git on the Raspberry Pi:
-
+- Install git on the Raspberry Pi:    
+`sudo apt install git`
 
 - Run the following code in Terminal :
     ```
@@ -85,8 +80,34 @@ Installation of Pi-Hole can be completed by completing the following steps:
     sudo bash basic-install.sh
     ```
 
+- Once Pi-Hole is installed, the admin password can be reset using the following command:   
+`sudo pihole -a -p`
 
 ## Jackett
+
+The following steps are taken from the official Jackett GitHub which can be found [here](https://github.com/Jackett/Jackett/blob/master/README.md).
+
+
+- Install the Mono repository:    
+```
+    sudo apt install apt-transport-https dirmngr gnupg ca-certificates
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+    echo "deb https://download.mono-project.com/repo/debian stable-raspbianbuster main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+    sudo apt update
+```
+
+- Install Mono:    
+`sudo apt install mono-devel`
+
+ 1. Install [Mono 5.8](http://www.mono-project.com/download/#download-lin) or better (using the latest stable release is recommended)
+       * Follow the instructions on the mono website and install the `mono-devel` and the `ca-certificates-mono` packages.
+       * On Red Hat/CentOS/openSUSE/Fedora the `mono-locale-extras` package is also required.
+ 2. Install  libcurl:
+       * Debian/Ubuntu: `apt-get install libcurl4-openssl-dev`
+       * Redhat/Fedora: `yum install libcurl-devel`
+       * For other distros see the  [Curl docs](http://curl.haxx.se/dlwiz/?type=devel).
+ 3. Download and extract the latest `Jackett.Binaries.Mono.tar.gz` release from the [releases page](https://github.com/Jackett/Jackett/releases) and run Jackett using mono with the command `mono --debug JackettConsole.exe`.
+ 4. (Optional) To install Jackett as a service, open the Terminal and run `sudo ./install_service_systemd_mono.sh` You need root permissions to install the service. The service will start on each logon. You can always stop it by running `systemctl stop jackett.service` from Terminal. You can start it again it using `systemctl start jackett.service`. Logs are stored as usual under `~/.config/Jackett/log.txt` and also in `journalctl -u jackett.service`.
 
 
 ## Sonarr
