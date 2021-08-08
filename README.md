@@ -40,9 +40,10 @@ The code works as follows:
 100. First list item
      - First nested list item
 
-- First list item
-  - First nested list item
- d
+- The code works as follows:
+  - `unzip` command will unzip the image file
+  - `unzip` command will unzip the image file
+ 
 
 ## Pi-Hole
 
