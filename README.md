@@ -11,9 +11,11 @@ The following guide walks through the steps to set up Pi-Hole on a fresh Raspbia
 The following steps are an abreviated version of the instructions for writing a Rasbpian image on a Linxu machine. The full set of instructions can be found [here](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md).
 
 
-- Download the latest version of Raspbian:  `wget https://downloads.raspberrypi.org/raspbian_lite_latest`
+- Download the latest version of Raspbian:  
+`wget https://downloads.raspberrypi.org/raspbian_lite_latest`
 
-- Discover the SD card mount:  `lsblk -p`
+- Discover the SD card mount:  
+`lsblk -p`
 
 
 
