@@ -57,6 +57,8 @@ The IP addresses of all devices on the current network can be found as follows:
 
 ## Pi-Hole
 
+<img src="https://wp-cdn.pi-hole.net/wp-content/uploads/2016/12/Vortex-R.png" alt="" width="100 px">
+
 ### Overview
 
 [Pi-Hole](https://pi-hole.net/) is a Linux network-level advertisement and Internet tracker blocking application which acts as a DNS sinkhole and optionally a DHCP server, intended for use on a private network.
